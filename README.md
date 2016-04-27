@@ -31,18 +31,20 @@ Kill the player unless they hit the X key in three seconds.
 
 ```c#
 public class AwardWinningGame : MonoBehaviour {
-  public Player player;
-  
-  private Timer _killPlayerTimer;
-  
-  private void Start() {
-    _killPlayerTimer = Timer.Register(3f, player.Die);
-  }
-  
-  private void Update() {
-    if (Input.GetKeyDown(KeyCode.X)) {
-      Timer.Cancel(_killPlayerTimer);
+    
+    public Player player;
+    private Timer _killPlayerTimer;
+    
+    private void Start() {
+        _killPlayerTimer = Timer.Register(3f, player.Die);
     }
-  }
+    
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.X)) {
+            Timer.Cancel(_killPlayerTimer);
+            Debug.Log("You won the game!");
+        }
+    }
+    
 }
 ```
