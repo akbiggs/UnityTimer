@@ -46,7 +46,10 @@ public class AwardWinningGame : MonoBehaviour {
     private Timer _killPlayerTimer;
     
     private void Start() {
-        _killPlayerTimer = Timer.Register(3f, player.Die);
+        _killPlayerTimer = Timer.Register(3f, () => {
+                player.Die();
+                Debug.Log("You lost the game...");
+        });
     }
     
     private void Update() {
