@@ -69,7 +69,7 @@ Out of the box, there are two main ways of handling timers in Unity:
 1. Use a coroutine with the WaitForSeconds method.
 2. Store the time that your timer started in a private variable (e.g. `startTime = Time.time`), then check in an Update call if `Time.time - startTime >= timerDuration`.
 
-The first method is verbose, forcing you to refactor your code to use IEnumerator functions. Furthermore, it necessitates having access to a MonoBehaviour instance to start the coroutine. This means that this solution will not work in non-MonoBehaviour classes.
+The first method is verbose, forcing you to refactor your code to use IEnumerator functions. Furthermore, it necessitates having access to a MonoBehaviour instance to start the coroutine, meaning that solution will not work in non-MonoBehaviour classes.
 
 The second method is error-prone, and hides away the actual game logic that you are trying to express.
 
