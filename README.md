@@ -24,9 +24,11 @@ Have a character say hello after five seconds of in-game time have passed.
 Timer.Register(5f, character.SayHello, useRealTime: false);
 
 // Pause the game for three seconds.
-// The character will say hello five seconds after the game is unpaused(eight seconds in real-time).
 Time.timeScale = 0f;
 Timer.Register(3f, () => Time.timeScale = 1f);
+
+// Because the game was paused for three seconds, the character will say hello after
+// eight seconds have passed
 ```
 
 Kill the player unless they hit the X key in three seconds.
