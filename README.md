@@ -1,6 +1,8 @@
 # Unity Timer
 
-This library makes it easy to run actions after a delay in Unity3D, having been battle-tested and hardened throughout numerous projects, including the award-winning [Pitfall Planet](http://pitfallplanet.com/).
+Run actions after a delay in Unity3D.
+
+This library has been battle-tested and hardened throughout numerous projects, including the award-winning [Pitfall Planet](http://pitfallplanet.com/).
 
 Written by Alexander Biggs + Adam Robinson-Yu
 
@@ -69,3 +71,8 @@ The first method is verbose, forcing you to refactor your code to use IEnumerato
 The second method is error-prone, and hides away the actual game logic that you are trying to express.
 
 This library alleviates both of these concerns, making it easy to add an easy-to-read, expressive timer to any class in your Unity project.
+
+# Usage Notes / Caveats
+
+1. This library does not currently seem to work on the Hololens. We are looking into a solution for this.
+2. Timers are destroyed when changing scenes.
