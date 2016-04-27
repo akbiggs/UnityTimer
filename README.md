@@ -1,8 +1,12 @@
 # Unity Timer
 
-This library makes it easy to run actions after a delay in Unity3D.
+This library makes it easy to run actions after a delay in Unity3D, having been battle-tested and hardened throughout numerous projects, including the award-winning [Pitfall Planet](http://pitfallplanet.com/).
 
-Written by: Alexander Biggs + Adam Robinson-Yu
+Written by Alexander Biggs + Adam Robinson-Yu
+
+# Installation
+
+Download the Timer.unitypackage file in this repository. Open the package file to install the package into your currently opened project in Unity.
 
 # Examples
 
@@ -52,3 +56,16 @@ public class AwardWinningGame : MonoBehaviour {
     
 }
 ```
+
+# Motivation
+
+Out of the box, there are two main ways of handling timers in Unity:
+
+1. Use a coroutine with the WaitForSeconds method.
+2. Store the time that your timer started in a private variable (e.g. `startTime = Time.time`), then check in an Update call if `Time.time - startTime >= timerDuration`.
+
+The first method is verbose, forcing you to refactor your code to use IEnumerator functions. Furthermore, it necessitates having access to a MonoBehaviour instance to start the coroutine.
+
+The second method is error-prone, and hides away the actual game logic that you are trying to express.
+
+This library alleviates both of these concerns, making it easy to add an easy-to-read, expressive timer to any class in your Unity project.
