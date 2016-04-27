@@ -2,6 +2,8 @@
 
 This library makes it easy to run actions after a delay in Unity3D.
 
+Written by: Alexander Biggs + Adam Robinson-Yu
+
 # Examples
 
 Log "Hello World" after five seconds.
