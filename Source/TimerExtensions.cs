@@ -19,7 +19,7 @@ public static class TimerExtensions
     /// <param name="useRealTime">Whether the timer uses real-time(not affected by slow-mo or pausing) or
     /// game-time(affected by time scale changes).</param>
     public static void AttachTimer(this MonoBehaviour behaviour, float duration, Action onComplete,
-        Action<float> onUpdate = null, bool isLooped = false, bool useRealTime = true)
+        Action<float> onUpdate = null, bool isLooped = false, bool useRealTime = false)
     {
         Timer.Register(duration, onComplete, onUpdate, isLooped, useRealTime, behaviour);
     }
