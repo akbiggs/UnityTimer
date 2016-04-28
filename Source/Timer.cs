@@ -89,7 +89,7 @@ public class Timer
     /// after the parent has been destroyed.</param>
     /// <returns>A timer object that allows you to examine stats and stop/resume progress.</returns>
     public static Timer Register(float duration, Action onComplete, Action<float> onUpdate = null,
-        bool isLooped = false, bool useRealTime = true, MonoBehaviour autoDestroyOwner = null)
+        bool isLooped = false, bool useRealTime = false, MonoBehaviour autoDestroyOwner = null)
     {
         // create a manager object to update all the timers if one does not already exist.
         if (Timer._manager == null)
