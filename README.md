@@ -8,7 +8,9 @@ Written by Alexander Biggs + Adam Robinson-Yu.
 
 ### Installation
 
-Download the Timer.unitypackage file in this repository. Open the package file to install the package into your currently opened project in Unity.
+To get the latest release of UnityTimer, head over to [the Releases page](https://github.com/akbiggs/UnityTimer/releases) and download the Timer.unitypackage file from the latest release. Then if you have a Unity project open, you can open the .unitypackage file to install the scripts into your project.
+
+Alternatively, if you like to live on the bleeding edge, you can clone this repository into your project's Assets folder. However, we do not guarantee this will give you a stable version.
 
 ### Basic Example
 
@@ -117,7 +119,7 @@ Timer.Register(transitionDuration,
 
 ## Motivation
 
-Out of the box, there are two main ways of handling timers in Unity:
+Out of the box, without this library, there are two main ways of handling timers in Unity:
 
 1. Use a coroutine with the WaitForSeconds method.
 2. Store the time that your timer started in a private variable (e.g. `startTime = Time.time`), then check in an Update call if `Time.time - startTime >= timerDuration`.
