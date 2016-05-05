@@ -1,6 +1,6 @@
 ﻿/*
  * Unity Timer
- * 
+ *
  * Version: 1.0
  * By: Alexander Biggs + Adam Robinson-Yu
  */
@@ -15,7 +15,7 @@ using Object = UnityEngine.Object;
 /// <summary>
 /// Allows you to run events on a delay without the use of <see cref="Coroutine"/>s
 /// or <see cref="MonoBehaviour"/>s.
-/// 
+///
 /// To create and start a Timer, use the <see cref="Register"/> method.
 /// </summary>
 public class Timer
@@ -74,7 +74,7 @@ public class Timer
     /// <summary>
     /// Register a new timer that should fire an event after a certain amount of time
     /// has elapsed.
-    /// 
+    ///
     /// Registered timers are destroyed when the scene changes.
     /// </summary>
     /// <param name="duration">The time to wait before the timer should fire, in seconds.</param>
@@ -211,14 +211,14 @@ public class Timer
     /// </summary>
     /// <returns>The number of seconds that have elapsed since the start of this timer's current cycle, i.e.
     /// the current loop if the timer is looped, or the start if it isn't.
-    /// 
+    ///
     /// If the timer has finished running, this is equal to the duration.
-    /// 
+    ///
     /// If the timer was cancelled/paused, this is equal to the number of seconds that passed between the timer
     /// starting and when it was cancelled/paused.</returns>
     public float GetTimeElapsed()
     {
-        if (this.isCompleted)
+        if (this.isCompleted || this.GetWorldTime() >= this.GetFireTime())
         {
             return this.duration;
         }
@@ -347,8 +347,14 @@ public class Timer
 
         this._lastUpdateTime = this.GetWorldTime();
 
+        if (this._onUpdate != null)
+        {
+            this._onUpdate(this.GetTimeElapsed());
+        }
+
         if (this.GetWorldTime() >= this.GetFireTime())
         {
+
             if (this._onComplete != null)
             {
                 this._onComplete();
@@ -362,10 +368,6 @@ public class Timer
             {
                 this.isCompleted = true;
             }
-        }
-        else if (this._onUpdate != null)
-        {
-            this._onUpdate(this.GetTimeElapsed());
         }
     }
 
