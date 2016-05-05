@@ -4,7 +4,7 @@ Run actions after a delay in Unity3D.
 
 This library has been battle-tested and hardened throughout numerous projects, including the award-winning [Pitfall Planet](http://pitfallplanet.com/).
 
-Written by Alexander Biggs + Adam Robinson-Yu.
+Written by [Alexander Biggs](akbiggs.net) + [Adam Robinson-Yu](http://www.adamgryu.com/).
 
 ### Installation
 
