@@ -12,17 +12,19 @@ Download the Timer.unitypackage file in this repository. Open the package file t
 
 ## Basic Example
 
-Log "Hello World" after five seconds.
-
 ```c#
+// Log "Hello World" after five seconds.
+
 Timer.Register(5f, () => Debug.Log("Hello World"));
 ```
 
 ## Features
 
-Make the player jump every two seconds.
+Make a timer repeat by setting `isLooped` to true.
 
 ```c#
+// Make the player jump every two seconds.
+
 Timer.Register(2f, player.Jump, isLooped: true);
 ```
 
