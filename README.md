@@ -34,7 +34,7 @@ Timer.Register(5f, () => Debug.Log("Hello World"));
 
 ## Features
 
-- Make a timer repeat by setting `isLooped` to true.
+**Make a timer repeat by setting `isLooped` to true.**
 
 ```c#
 // Call the player's jump method every two seconds.
@@ -42,7 +42,7 @@ Timer.Register(5f, () => Debug.Log("Hello World"));
 Timer.Register(2f, player.Jump, isLooped: true);
 ```
 
-- Cancel a timer after calling it.
+**Cancel a timer after calling it.**
 
 ```c#
 Timer timer;
@@ -58,7 +58,7 @@ void Update() {
 }
 ```
 
-- Measure time by [realtimeSinceStartup](http://docs.unity3d.com/ScriptReference/Time-realtimeSinceStartup.html) instead of scaled game time by setting `useRealTime` to true.
+**Measure time by [realtimeSinceStartup](http://docs.unity3d.com/ScriptReference/Time-realtimeSinceStartup.html) instead of scaled game time by setting `useRealTime` to true.**
 
 ```c#
 // Let's say you pause your game by setting the timescale to 0.
@@ -67,7 +67,7 @@ Time.timeScale = 0f;
 // ...Then use real time so this timer will still fire even though the game time isn't progressing.
 Timer.Register(1f, this.HandlePausedGameState, useRealTime: true);
 ```
-- Attach the timer to a MonoBehaviour so that the timer is destroyed when the MonoBehaviour is.
+**Attach the timer to a MonoBehaviour so that the timer is destroyed when the MonoBehaviour is.**
 
 Very often, a timer called from a MonoBehaviour will manipulate that behaviour's state. Thus, it is common practice to cancel the timer in the OnDestroy method of the MonoBehaviour. We've added a convenient extension method that attaches a Timer to a MonoBehaviour such that it will cancel the timer when the MonoBehaviour is detected as null.
 
