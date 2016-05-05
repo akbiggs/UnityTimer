@@ -10,13 +10,14 @@ Written by Alexander Biggs + Adam Robinson-Yu
 
 Download the Timer.unitypackage file in this repository. Open the package file to install the package into your currently opened project in Unity.
 
-# Examples
-
-Log "Hello World" after five seconds.
+# Simple Example
 
 ```c#
-Timer.Register(5f, () => Debug.Log("Hello World"))
+// Log "Hello World" after five seconds.
+Timer.Register(5f, () => Debug.Log("Hello World"));
 ```
+
+# Features
 
 Make the player jump every two seconds.
 
