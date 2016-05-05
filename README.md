@@ -98,6 +98,7 @@ public class CoolMonoBehaviour : MonoBehaviour {
 **Update a value gradually over time using the `onUpdate` callback.**
 
 ```c#
+// Change a color from white to red over the course of five seconds.
 Color color = Color.white;
 float transitionDuration = 5f;
 
