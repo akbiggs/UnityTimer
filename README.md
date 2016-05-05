@@ -32,7 +32,7 @@ The method is called like this:
 Timer.Register(5f, () => Debug.Log("Hello World"));
 ```
 
-### Features
+## Features
 
 - Make a timer repeat by setting `isLooped` to true.
 
@@ -102,7 +102,7 @@ public class CoolMonoBehaviour : MonoBehaviour {
 - timer.GetRatioComplete()
 - timer.isDone
 
-### Motivation
+## Motivation
 
 Out of the box, there are two main ways of handling timers in Unity:
 
@@ -115,7 +115,7 @@ The second method is error-prone, and hides away the actual game logic that you 
 
 This library alleviates both of these concerns, making it easy to add an easy-to-read, expressive timer to any class in your Unity project.
 
-### Usage Notes / Caveats
+## Usage Notes / Caveats
 
 1. This library does not currently seem to work on the Hololens. We are looking into a solution for this.
 2. All timers are destroyed when changing scenes. This behaviour is typically desired, and it happens because timers are updated by a TimerController that is also destroyed when the scene changes.
