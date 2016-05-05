@@ -67,6 +67,7 @@ Time.timeScale = 0f;
 // ...Then set useRealTime so this timer will still fire even though the game time isn't progressing.
 Timer.Register(1f, this.HandlePausedGameState, useRealTime: true);
 ```
+
 **Attach the timer to a MonoBehaviour so that the timer is destroyed when the MonoBehaviour is.**
 
 Very often, a timer called from a MonoBehaviour will manipulate that behaviour's state. Thus, it is common practice to cancel the timer in the OnDestroy method of the MonoBehaviour. We've added a convenient extension method that attaches a Timer to a MonoBehaviour such that it will automatically cancel the timer when the MonoBehaviour is detected as null.
@@ -94,7 +95,19 @@ public class CoolMonoBehaviour : MonoBehaviour {
 }
 ```
 
-**A number of other useful features are included...**
+**Update a value gradually over time using the `onUpdate` callback.**
+
+```c#
+Color color = Color.white;
+float transitionDuration = 5f;
+
+Timer.Register(transitionDuration,
+   onUpdate: secondsElapsed => color.r = 255 * (secondsElapsed / transitionDuration),
+   onComplete: () => Debug.Log("Color is now red"));
+```
+
+**A number of other useful features are included!**
+
 - timer.Pause()
 - timer.Resume()
 - timer.GetTimeRemaining()
