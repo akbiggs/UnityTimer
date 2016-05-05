@@ -6,11 +6,11 @@ This library has been battle-tested and hardened throughout numerous projects, i
 
 Written by Alexander Biggs + Adam Robinson-Yu.
 
-## Installation
+### Installation
 
 Download the Timer.unitypackage file in this repository. Open the package file to install the package into your currently opened project in Unity.
 
-## Basic Example
+### Basic Example
 
 ```c#
 // Log "Hello World" after five seconds.
@@ -18,7 +18,7 @@ Download the Timer.unitypackage file in this repository. Open the package file t
 Timer.Register(5f, () => Debug.Log("Hello World"));
 ```
 
-## Features
+### Features
 
 Make a timer repeat by setting `isLooped` to true.
 
@@ -66,7 +66,7 @@ public class AwardWinningGame : MonoBehaviour {
 }
 ```
 
-## Motivation
+### Motivation
 
 Out of the box, there are two main ways of handling timers in Unity:
 
@@ -79,7 +79,7 @@ The second method is error-prone, and hides away the actual game logic that you 
 
 This library alleviates both of these concerns, making it easy to add an easy-to-read, expressive timer to any class in your Unity project.
 
-## Usage Notes / Caveats
+### Usage Notes / Caveats
 
 1. This library does not currently seem to work on the Hololens. We are looking into a solution for this.
 2. Timers are destroyed when changing scenes.
