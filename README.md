@@ -117,6 +117,8 @@ Timer.Register(transitionDuration,
 - timer.GetRatioComplete()
 - timer.isDone
 
+A test scene + script demoing all the features is included with the package in the `Timer/Example` folder.
+
 ## Motivation
 
 Out of the box, without this library, there are two main ways of handling timers in Unity:
