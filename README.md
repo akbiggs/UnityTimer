@@ -23,47 +23,35 @@ Timer.Register(5f, () => Debug.Log("Hello World"));
 Make a timer repeat by setting `isLooped` to true.
 
 ```c#
-// Make the player jump every two seconds.
+// Call the player's jump method every two seconds.
 
 Timer.Register(2f, player.Jump, isLooped: true);
 ```
 
-Have a character say hello after five seconds of "real time" have passed. By default, a Timer fires after the requested amount of seconds have elapsed in "game time" -- slow-mo, fast-mo and pauses will affect when the Timer callback is triggered. 
+Cancel a timer after calling it.
 
 ```c#
-Timer.Register(5f, character.SayHello, useRealTime: true);
+Timer timer;
 
-// Pause the game for three seconds.
-Time.timeScale = 0f;
-Timer.Register(3f, () => Time.timeScale = 1f);
+void Start() {
+   timer = Timer.Register(2f, () => Debug.Log("You won't see this text if you press X."));
+}
 
-// Even though the game was paused for three seconds, the character will say hello two
-// seconds later.
+void Update() {
+    if (Input.GetKeyDown(KeyCode.X)) {
+        Timer.Cancel(timer);
+    }
+}
 ```
 
-Kill the player unless they hit the X key in three seconds.
+Measure time by [realtimeSinceStartup](http://docs.unity3d.com/ScriptReference/Time-realtimeSinceStartup.html) instead of scaled game time by setting `useRealTime` to true.
 
 ```c#
-public class AwardWinningGame : MonoBehaviour {
-    
-    public Player player;
-    private Timer _killPlayerTimer;
-    
-    private void Start() {
-        _killPlayerTimer = Timer.Register(3f, () => {
-                player.Die();
-                Debug.Log("You lost the game...");
-        });
-    }
-    
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.X)) {
-            Timer.Cancel(_killPlayerTimer);
-            Debug.Log("You won the game!");
-        }
-    }
-    
-}
+// Pause your game by setting the timescale to 0.
+Time.timeScale = 0f;
+
+// Use real time so this timer will still fire even though the game time isn't progressing.
+Timer.Register(1f, character.SayHello, useRealTime: true);
 ```
 
 ### Motivation
