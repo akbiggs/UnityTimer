@@ -98,8 +98,10 @@ public class TestTimerBehaviour : MonoBehaviour
 
         TimeElapsedText.text = string.Format("Time elapsed: {0:F2} seconds", _testTimer.GetTimeElapsed());
         TimeRemainingText.text = string.Format("Time remaining: {0:F2} seconds", _testTimer.GetTimeRemaining());
-        PercentageCompletedText.text = string.Format("Percentage completed: {0:F4}%", _testTimer.GetRatioComplete() * 100);
-        PercentageRemainingText.text = String.Format("Percentage remaining: {0:F4}%", _testTimer.GetRatioRemaining() * 100);
+        PercentageCompletedText.text = string.Format("Percentage completed: {0:F4}%",
+            _testTimer.GetRatioComplete() * 100);
+        PercentageRemainingText.text = String.Format("Percentage remaining: {0:F4}%",
+            _testTimer.GetRatioRemaining() * 100);
         NumberOfLoopsText.text = string.Format("# Loops: {0}", _numLoops);
         IsCancelledText.text = string.Format("Is Cancelled: {0}", _testTimer.isCancelled);
         IsCompletedText.text = string.Format("Is Completed: {0}", _testTimer.isCompleted);

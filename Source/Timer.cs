@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Object = UnityEngine.Object;
@@ -101,7 +102,7 @@ public class Timer
             }
             else
             {
-                GameObject managerObject = new GameObject {name = "TimerManager"};
+                GameObject managerObject = new GameObject { name = "TimerManager" };
                 Timer._manager = managerObject.AddComponent<TimerManager>();
             }
         }
@@ -170,6 +171,11 @@ public class Timer
     /// </summary>
     public void Cancel()
     {
+        if (this.isDone)
+        {
+            return;
+        }
+
         this._timeElapsedBeforeCancel = this.GetTimeElapsed();
         this._timeElapsedBeforePause = null;
     }
@@ -218,8 +224,8 @@ public class Timer
         }
 
         return this._timeElapsedBeforeCancel ??
-            this._timeElapsedBeforePause ??
-            this.GetWorldTime() - this._startTime;
+               this._timeElapsedBeforePause ??
+               this.GetWorldTime() - this._startTime;
     }
 
     /// <summary>
@@ -422,4 +428,3 @@ public class Timer
     #endregion
 
 }
-
