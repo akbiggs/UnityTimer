@@ -69,7 +69,7 @@ Timer.Register(1f, this.HandlePausedGameState, useRealTime: true);
 ```
 **Attach the timer to a MonoBehaviour so that the timer is destroyed when the MonoBehaviour is.**
 
-Very often, a timer called from a MonoBehaviour will manipulate that behaviour's state. Thus, it is common practice to cancel the timer in the OnDestroy method of the MonoBehaviour. We've added a convenient extension method that attaches a Timer to a MonoBehaviour such that it will cancel the timer when the MonoBehaviour is detected as null.
+Very often, a timer called from a MonoBehaviour will manipulate that behaviour's state. Thus, it is common practice to cancel the timer in the OnDestroy method of the MonoBehaviour. We've added a convenient extension method that attaches a Timer to a MonoBehaviour such that it will automatically cancel the timer when the MonoBehaviour is detected as null.
 
 ```c#
 public class CoolMonoBehaviour : MonoBehaviour {
