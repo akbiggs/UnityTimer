@@ -64,7 +64,7 @@ void Update() {
 // Let's say you pause your game by setting the timescale to 0.
 Time.timeScale = 0f;
 
-// ...Then use real time so this timer will still fire even though the game time isn't progressing.
+// ...Then set useRealTime so this timer will still fire even though the game time isn't progressing.
 Timer.Register(1f, this.HandlePausedGameState, useRealTime: true);
 ```
 **Attach the timer to a MonoBehaviour so that the timer is destroyed when the MonoBehaviour is.**
