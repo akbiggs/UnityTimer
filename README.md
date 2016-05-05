@@ -24,17 +24,17 @@ Make the player jump every two seconds.
 Timer.Register(2f, player.Jump, isLooped: true);
 ```
 
-Have a character say hello after five seconds of in-game time have passed.
+Have a character say hello after five seconds of "real time" have passed. By default, a Timer fires after the requested amount of seconds have elapsed in "game time" -- slow-mo, fast-mo and pauses will affect when the Timer callback is triggered. 
 
 ```c#
-Timer.Register(5f, character.SayHello, useRealTime: false);
+Timer.Register(5f, character.SayHello, useRealTime: true);
 
 // Pause the game for three seconds.
 Time.timeScale = 0f;
 Timer.Register(3f, () => Time.timeScale = 1f);
 
-// Because the game was paused for three seconds, the character will say hello after
-// eight seconds have passed
+// Even though the game was paused for three seconds, the character will say hello two
+// seconds later.
 ```
 
 Kill the player unless they hit the X key in three seconds.
