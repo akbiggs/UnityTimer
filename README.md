@@ -12,6 +12,20 @@ Download the Timer.unitypackage file in this repository. Open the package file t
 
 ### Basic Example
 
+The Unity Timer package provides the following method for creating timers:
+
+```c#
+/// <summary>
+/// Register a new timer that should fire an event after a certain amount of time
+/// has elapsed.
+/// </summary>
+/// <param name="duration">The time to wait before the timer should fire, in seconds.</param>
+/// <param name="onComplete">An action to fire when the timer completes.</param>
+public static Timer Register(float duration, Action onComplete);
+```
+
+The method is called like this:
+
 ```c#
 // Log "Hello World" after five seconds.
 
@@ -20,7 +34,7 @@ Timer.Register(5f, () => Debug.Log("Hello World"));
 
 ### Features
 
-Make a timer repeat by setting `isLooped` to true.
+- Make a timer repeat by setting `isLooped` to true.
 
 ```c#
 // Call the player's jump method every two seconds.
@@ -28,7 +42,7 @@ Make a timer repeat by setting `isLooped` to true.
 Timer.Register(2f, player.Jump, isLooped: true);
 ```
 
-Cancel a timer after calling it.
+- Cancel a timer after calling it.
 
 ```c#
 Timer timer;
@@ -38,20 +52,45 @@ void Start() {
 }
 
 void Update() {
-    if (Input.GetKeyDown(KeyCode.X)) {
-        Timer.Cancel(timer);
-    }
+   if (Input.GetKeyDown(KeyCode.X)) {
+      Timer.Cancel(timer);
+   }
 }
 ```
 
-Measure time by [realtimeSinceStartup](http://docs.unity3d.com/ScriptReference/Time-realtimeSinceStartup.html) instead of scaled game time by setting `useRealTime` to true.
+- Measure time by [realtimeSinceStartup](http://docs.unity3d.com/ScriptReference/Time-realtimeSinceStartup.html) instead of scaled game time by setting `useRealTime` to true.
 
 ```c#
-// Pause your game by setting the timescale to 0.
+// Let's say you pause your game by setting the timescale to 0.
 Time.timeScale = 0f;
 
-// Use real time so this timer will still fire even though the game time isn't progressing.
-Timer.Register(1f, character.SayHello, useRealTime: true);
+// ...Then use real time so this timer will still fire even though the game time isn't progressing.
+Timer.Register(1f, this.HandlePausedGameState, useRealTime: true);
+```
+- Attach the timer to a MonoBehaviour so that the timer is destroyed when the MonoBehaviour is.
+Very often, a timer called from a MonoBehaviour will manipulate that behaviour's state. Thus, it is common practice to cancel the timer in the OnDestroy method of the MonoBehaviour. We've added a convenient extension method that attaches a Timer to the MonoBehaviour such that it will cancel the timer when the MonoBehaviour is detected as null.
+
+```c#
+public class CoolMonoBehaviour : MonoBehaviour {
+
+   void Start() {
+   
+      // Use the AttachTimer extension method to create a timer that is destroyed when this object is destroyed.
+      this.AttachTimer(5f, () => {
+      
+         // If this code runs after the object is destroyed, a null reference will be thrown,
+         // which could corrupt game state.
+         this.gameObject.transform.position = Vector3.zero;
+      });
+   }
+   
+   void Update() {
+      // This code could destroy the object at any time!
+      if (Input.GetKeyDown(KeyCode.X)) {
+         GameObject.Destroy(this.gameObject);
+      }
+   }
+}
 ```
 
 ### Motivation
