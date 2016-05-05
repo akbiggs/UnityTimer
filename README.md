@@ -75,7 +75,6 @@ Very often, a timer called from a MonoBehaviour will manipulate that behaviour's
 public class CoolMonoBehaviour : MonoBehaviour {
 
    void Start() {
-   
       // Use the AttachTimer extension method to create a timer that is destroyed when this
       // object is destroyed.
       this.AttachTimer(5f, () => {
