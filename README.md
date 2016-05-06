@@ -34,6 +34,19 @@ The method is called like this:
 Timer.Register(5f, () => Debug.Log("Hello World"));
 ```
 
+## Motivation
+
+Out of the box, without this library, there are two main ways of handling timers in Unity:
+
+1. Use a coroutine with the WaitForSeconds method.
+2. Store the time that your timer started in a private variable (e.g. `startTime = Time.time`), then check in an Update call if `Time.time - startTime >= timerDuration`.
+
+The first method is verbose, forcing you to refactor your code to use IEnumerator functions. Furthermore, it necessitates having access to a MonoBehaviour instance to start the coroutine, meaning that solution will not work in non-MonoBehaviour classes. Finally, there is no way to prevent WaitForSeconds from being affected by changes to the [time scale](http://docs.unity3d.com/ScriptReference/Time-timeScale.html).
+
+The second method is error-prone, and hides away the actual game logic that you are trying to express.
+
+This library alleviates both of these concerns, making it easy to add an easy-to-read, expressive timer to any class in your Unity project.
+
 ## Features
 
 **Make a timer repeat by setting `isLooped` to true.**
@@ -119,18 +132,7 @@ Timer.Register(transitionDuration,
 
 A test scene + script demoing all the features is included with the package in the `Timer/Example` folder.
 
-## Motivation
 
-Out of the box, without this library, there are two main ways of handling timers in Unity:
-
-1. Use a coroutine with the WaitForSeconds method.
-2. Store the time that your timer started in a private variable (e.g. `startTime = Time.time`), then check in an Update call if `Time.time - startTime >= timerDuration`.
-
-The first method is verbose, forcing you to refactor your code to use IEnumerator functions. Furthermore, it necessitates having access to a MonoBehaviour instance to start the coroutine, meaning that solution will not work in non-MonoBehaviour classes. Finally, there is no way to prevent WaitForSeconds from being affected by changes to the [time scale](http://docs.unity3d.com/ScriptReference/Time-timeScale.html).
-
-The second method is error-prone, and hides away the actual game logic that you are trying to express.
-
-This library alleviates both of these concerns, making it easy to add an easy-to-read, expressive timer to any class in your Unity project.
 
 ## Usage Notes / Caveats
 
