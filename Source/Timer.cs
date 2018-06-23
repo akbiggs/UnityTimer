@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Unity Timer
  *
  * Version: 1.0
