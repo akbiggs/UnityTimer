@@ -18,9 +18,9 @@ public static class TimerExtensions
     /// <param name="isLooped">Whether the timer should restart after executing.</param>
     /// <param name="useRealTime">Whether the timer uses real-time(not affected by slow-mo or pausing) or
     /// game-time(affected by time scale changes).</param>
-    public static void AttachTimer(this MonoBehaviour behaviour, float duration, Action onComplete,
+    public static Timer AttachTimer(this MonoBehaviour behaviour, float duration, Action onComplete,
         Action<float> onUpdate = null, bool isLooped = false, bool useRealTime = false)
     {
-        Timer.Register(duration, onComplete, onUpdate, isLooped, useRealTime, behaviour);
+        return Timer.Register(duration, onComplete, onUpdate, isLooped, useRealTime, behaviour);
     }
 }
