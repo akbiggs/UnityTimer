@@ -162,6 +162,28 @@ public class Timer
         // need to do anything in this case
     }
 
+    public static void PauseAllRegisteredTimers()
+    {
+        if (Timer._manager != null)
+        {
+            Timer._manager.PauseAllTimers();
+        }
+
+        // if the manager doesn't exist, we don't have any registered timers yet, so don't
+        // need to do anything in this case
+    }
+
+    public static void ResumeAllRegisteredTimers()
+    {
+        if (Timer._manager != null)
+        {
+            Timer._manager.ResumeAllTimers();
+        }
+
+        // if the manager doesn't exist, we don't have any registered timers yet, so don't
+        // need to do anything in this case
+    }
+
     #endregion
 
     #region Public Methods
@@ -380,7 +402,7 @@ public class Timer
     /// This will be instantiated the first time you create a timer -- you do not need to add it into the
     /// scene manually.
     /// </summary>
-    public class TimerManager : MonoBehaviour
+    private class TimerManager : MonoBehaviour
     {
         private List<Timer> _timers = new List<Timer>();
 
@@ -418,7 +440,6 @@ public class Timer
                 timer.Resume();
             }
         }
-
 
         // update all the registered timers on every frame
         [UsedImplicitly]
