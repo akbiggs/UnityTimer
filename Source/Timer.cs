@@ -380,7 +380,7 @@ public class Timer
     /// This will be instantiated the first time you create a timer -- you do not need to add it into the
     /// scene manually.
     /// </summary>
-    private class TimerManager : MonoBehaviour
+    public class TimerManager : MonoBehaviour
     {
         private List<Timer> _timers = new List<Timer>();
 
@@ -402,6 +402,23 @@ public class Timer
             this._timers = new List<Timer>();
             this._timersToAdd = new List<Timer>();
         }
+
+        public void PauseAllTimers()
+        {
+            foreach (Timer timer in this._timers)
+            {
+                timer.Pause();
+            }
+        }
+
+        public void ResumeAllTimers()
+        {
+            foreach (Timer timer in this._timers)
+            {
+                timer.Resume();
+            }
+        }
+
 
         // update all the registered timers on every frame
         [UsedImplicitly]
