@@ -162,6 +162,28 @@ public class Timer
         // need to do anything in this case
     }
 
+    public static void PauseAllRegisteredTimers()
+    {
+        if (Timer._manager != null)
+        {
+            Timer._manager.PauseAllTimers();
+        }
+
+        // if the manager doesn't exist, we don't have any registered timers yet, so don't
+        // need to do anything in this case
+    }
+
+    public static void ResumeAllRegisteredTimers()
+    {
+        if (Timer._manager != null)
+        {
+            Timer._manager.ResumeAllTimers();
+        }
+
+        // if the manager doesn't exist, we don't have any registered timers yet, so don't
+        // need to do anything in this case
+    }
+
     #endregion
 
     #region Public Methods
@@ -401,6 +423,22 @@ public class Timer
 
             this._timers = new List<Timer>();
             this._timersToAdd = new List<Timer>();
+        }
+
+        public void PauseAllTimers()
+        {
+            foreach (Timer timer in this._timers)
+            {
+                timer.Pause();
+            }
+        }
+
+        public void ResumeAllTimers()
+        {
+            foreach (Timer timer in this._timers)
+            {
+                timer.Resume();
+            }
         }
 
         // update all the registered timers on every frame
