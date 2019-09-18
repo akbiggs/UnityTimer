@@ -12,5 +12,11 @@
   "author": {
     "name": "Alexander Biggs and Adam Robinson-Yu",
     "url": "https://github.com/akbiggs/UnityTimer"
-  } 
+  }
+  "contributors": [
+    {
+      "name": "Pete Goodfellow",
+      "url": "https://github.com/Petethegoat"
+    }
+  ]
 }
