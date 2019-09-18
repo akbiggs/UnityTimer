@@ -1,0 +1,22 @@
+{
+  "name": "com.akbiggs.unitytimer",
+  "version": "1.1.0",
+  "displayName": "Unity Timer",
+  "description": "Run actions after a delay in Unity3D.",
+  "unity": "2018.1",
+ "keywords": [
+    "timer",
+    "coroutine",
+    "callback"
+  ],
+  "author": {
+    "name": "Alexander Biggs and Adam Robinson-Yu",
+    "url": "https://github.com/akbiggs/UnityTimer"
+  },
+  "contributors": [
+    {
+      "name": "Pete Goodfellow",
+      "url": "https://github.com/Petethegoat"
+    }
+  ]
+}
