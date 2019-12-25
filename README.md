@@ -132,9 +132,6 @@ Timer.Register(transitionDuration,
 
 A test scene + script demoing all the features is included with the package in the `Timer/Example` folder.
 
-
-
 ## Usage Notes / Caveats
 
-1. This library does not currently seem to work on the Hololens. We are looking into a solution for this.
-2. All timers are destroyed when changing scenes. This behaviour is typically desired, and it happens because timers are updated by a TimerController that is also destroyed when the scene changes. Note that as a result of this, creating a Timer when the scene is being closed, e.g. in an object's OnDestroy method, will [result in a Unity error when the TimerController is spawned](http://i.imgur.com/ESFmFDO.png).
+1. All timers are destroyed when changing scenes. This behaviour is typically desired, and it happens because timers are updated by a TimerController that is also destroyed when the scene changes. Note that as a result of this, creating a Timer when the scene is being closed, e.g. in an object's OnDestroy method, will [result in a Unity error when the TimerController is spawned](http://i.imgur.com/ESFmFDO.png).
