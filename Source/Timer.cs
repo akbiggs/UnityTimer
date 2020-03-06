@@ -379,7 +379,14 @@ public class Timer
 
             if (this._onComplete != null)
             {
-                this._onComplete();
+                try
+                {
+                    this._onComplete();
+                }
+                catch
+                {
+                    // how to handle exception is left for the author 
+                }
             }
 
             if (this.isLooped)
