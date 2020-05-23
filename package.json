@@ -1,7 +1,7 @@
 {
   "name": "com.akbiggs.unitytimer",
   "version": "1.1.0",
-  "displayName": "Unity Timer",
+  "displayName": "Timer",
   "description": "Run actions after a delay in Unity3D.",
   "unity": "2018.1",
  "keywords": [
