@@ -18,6 +18,7 @@ using Object = UnityEngine.Object;
 ///
 /// To create and start a Timer, use the <see cref="Register"/> method.
 /// </summary>
+namespace UnityTimer{
 public class Timer
 {
     #region Public Properties/Fields
@@ -467,4 +468,5 @@ public class Timer
 
     #endregion
 
+}
 }

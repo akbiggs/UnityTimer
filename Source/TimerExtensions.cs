@@ -4,6 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Contains extension methods related to <see cref="Timer"/>s.
 /// </summary>
+namespace UnityTimer{
 public static class TimerExtensions
 {
     /// <summary>
@@ -23,4 +24,5 @@ public static class TimerExtensions
     {
         return Timer.Register(duration, onComplete, onUpdate, isLooped, useRealTime, behaviour);
     }
+}
 }
