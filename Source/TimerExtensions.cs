@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Contains extension methods related to <see cref="Timer"/>s.
 /// </summary>
-namespace UnityTimer{
+namespace UnityTimer {
 public static class TimerExtensions
 {
     /// <summary>
