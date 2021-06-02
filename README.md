@@ -10,7 +10,10 @@ Written by [Alexander Biggs](http://akbiggs.xyz) + [Adam Robinson-Yu](http://www
 
 To get the latest release of UnityTimer, head over to [the Releases page](https://github.com/akbiggs/UnityTimer/releases) and download the Timer.unitypackage file from the latest release. Then if you have a Unity project open, you can open the .unitypackage file to install the scripts into your project.
 
-Alternatively, if you like to live on the bleeding edge, you can clone this repository into your project's Assets folder. However, we do not guarantee this will give you a stable version.
+Alternatively, if you like to live on the bleeding edge, add `https://github.com/akbiggs/UnityTimer.git` to your packages in Unity Package Manager. However, we do not guarantee this will give you a stable version.
+
+![Screenshot of selecting add git URL](https://i.imgur.com/Crx5hnZ.png)
+![Screenshot of adding package to UPM](https://i.imgur.com/IW4b6a8.png)
 
 ### Basic Example
 
