@@ -6,8 +6,8 @@
  */
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Object = UnityEngine.Object;
@@ -91,7 +91,7 @@ public class Timer
     /// after the parent has been destroyed.</param>
     /// <returns>A timer object that allows you to examine stats and stop/resume progress.</returns>
     public static Timer Register(float duration, Action onComplete, Action<float> onUpdate = null,
-        bool isLooped = false, bool useRealTime = false, MonoBehaviour autoDestroyOwner = null)
+        bool isLooped = false, bool useRealTime = false, MonoBehaviour autoDestroyOwner = null, bool cancelOnSceneChange = true)
     {
         // create a manager object to update all the timers if one does not already exist.
         if (Timer._manager == null)
@@ -105,10 +105,11 @@ public class Timer
             {
                 GameObject managerObject = new GameObject { name = "TimerManager" };
                 Timer._manager = managerObject.AddComponent<TimerManager>();
+                GameObject.DontDestroyOnLoad(managerObject);
             }
         }
 
-        Timer timer = new Timer(duration, onComplete, onUpdate, isLooped, useRealTime, autoDestroyOwner);
+        Timer timer = new Timer(duration, onComplete, onUpdate, isLooped, useRealTime, autoDestroyOwner, cancelOnSceneChange);
         Timer._manager.RegisterTimer(timer);
         return timer;
     }
@@ -314,12 +315,14 @@ public class Timer
     private readonly MonoBehaviour _autoDestroyOwner;
     private readonly bool _hasAutoDestroyOwner;
 
+    private readonly bool _cancelOnSceneChange;
+
     #endregion
 
     #region Private Constructor (use static Register method to create new timer)
 
     private Timer(float duration, Action onComplete, Action<float> onUpdate,
-        bool isLooped, bool usesRealTime, MonoBehaviour autoDestroyOwner)
+        bool isLooped, bool usesRealTime, MonoBehaviour autoDestroyOwner, bool cancelOnSceneChange)
     {
         this.duration = duration;
         this._onComplete = onComplete;
@@ -330,6 +333,8 @@ public class Timer
 
         this._autoDestroyOwner = autoDestroyOwner;
         this._hasAutoDestroyOwner = autoDestroyOwner != null;
+
+        this._cancelOnSceneChange = cancelOnSceneChange;
 
         this._startTime = this.GetWorldTime();
         this._lastUpdateTime = this._startTime;
@@ -409,6 +414,29 @@ public class Timer
 
         // buffer adding timers so we don't edit a collection during iteration
         private List<Timer> _timersToAdd = new List<Timer>();
+
+        [UsedImplicitly]
+        public void OnEnable()
+        {
+            SceneManager.activeSceneChanged += ActiveSceneChanged;
+        }
+
+        [UsedImplicitly]
+        public void OnDisable()
+        {
+            SceneManager.activeSceneChanged -= ActiveSceneChanged;
+        }
+
+        private void ActiveSceneChanged(Scene from, Scene to)
+        {
+            foreach (Timer timer in this._timers)
+            {
+                if(timer._cancelOnSceneChange)
+                {
+                    timer.Cancel();
+                }
+            }
+        }
 
         public void RegisterTimer(Timer timer)
         {
