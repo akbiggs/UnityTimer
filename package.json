@@ -4,7 +4,7 @@
   "displayName": "Timer",
   "description": "Run actions after a delay in Unity3D.",
   "unity": "2018.1",
- "keywords": [
+  "keywords": [
     "timer",
     "coroutine",
     "callback"
